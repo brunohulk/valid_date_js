@@ -1,23 +1,28 @@
-#Valid Date JS
+#Valid Date JS 2.0.0
 
-Is a simple function to validate a date in javascript, it will be improved for next version, for
-while is working for our aims.  
+Check if a date is valid in javascript, using string prototype.
 
 There are a few tests using QUnit on the spec folder, if you wish to know better how to use it.
-
 
 ##Sample  
 
 ```javascript
 
-var validDate = '09/10/2015';
-var day = validDate.substr(0,2);
-var month = validDate.substr(3,2);
-var year = validDate.substr(6,4);
+var date = '09/10/2015';
 
-isValidDate(year, day, month);
+if (date.isValidDate('dd-mm-yyyy')) {
+    alert("Data valida");
+}
+
+var date2 = '11/30/2015';
+
+if (date2.isValidDate('mm-dd-yyyy')) {
+    alert("Data valida 2");
+}
 
 ```
+
+There are two formats available to check 'dd-mm-yyyy' and 'mm-dd-yyyy', if is not specified the default is mm-dd-yyyy
 
 ##Using this function
 You only have to include the valid_date.js, isn't necessary any other library.

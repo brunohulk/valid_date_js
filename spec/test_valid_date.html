@@ -13,6 +13,7 @@
 <div id="qunit-fixture"></div>
 <script>
     $(function() {
+
         var dateFixture = {
             '11/12/2015': true,
             '09/10/2015': true,
@@ -22,13 +23,25 @@
             '09/15/2015': false
         };
 
-        $.each(dateFixture, function (date, value) {
-            var day = date.substr(0, 2);
-            var month = date.substr(3, 2);
-            var year = date.substr(6, 4);
+        var americaDateFixture = {
+            '11/30/2015': true,
+            '09/15/2015': true,
+            '09/16/2015': true,
+            '11/02/2015': true,
+            '22/16/2015': false,
+            '31/09/1998': false,
+            '21/09/XXXX': false
+        };
 
-            QUnit.test("Validando data", function (assert) {
-                assert.equal(isValidDate(year, month, day), value, 'Essa data deveria ter falhado no teste: ' + date);
+        $.each(dateFixture, function (date, value) {
+            QUnit.test("Validating data ", function (assert) {
+                assert.equal(date.isValidDate('dd-mm-yyyy'), value, "This test shouldn't be pass: " + date);
+            });
+        });
+
+        $.each(americaDateFixture, function (date, value) {
+            QUnit.test("Validating american data ", function (assert) {
+                assert.equal(date.isValidDate('mm-dd-yyyy'), value, "This test shouldn't be pass:" + date);
             });
         });
     });
